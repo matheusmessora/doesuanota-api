@@ -1,7 +1,8 @@
-package com.doesuanota.api.endpoint;
+package com.doesuanota.api.endpoint.participate;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,17 +16,9 @@ public class ParticipateEndpoint {
 
     @RequestMapping(method = POST, produces = {APPLICATION_JSON_VALUE})
     @ResponseBody
-    public ResponseEntity create() {
-//        IntegrationLogDataContract resource = this.findLastByNfeKey(nfeKey);
-//
-//        if (resource == null) {
-//            throw new NotFoundException("Not found any epec with the given nfe key: " + nfeKey);
-//        }
-//
-//        return builder()
-//                .addEntity(resource.getResponseInvoice())
-//                .addHttpStatus(OK)
-//                .build();
+    public ResponseEntity create(@RequestBody ParticipateResource resource) {
+
+
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }

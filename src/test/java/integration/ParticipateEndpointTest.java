@@ -1,6 +1,8 @@
 package integration;
 
 import com.doesuanota.api.Application;
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.net.URL;
 import java.nio.charset.Charset;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -40,7 +43,11 @@ public class ParticipateEndpointTest {
 
     @Test
     public void success_create() throws Exception {
+        final URL file = Resources.getResource("requests/participate/success_create.json");
+        String request = Resources.toString(file, Charsets.UTF_8);
+
         mockMvc.perform(post("/participate")
+                .content(request)
                 .contentType(contentType))
                 .andExpect(status().isCreated());
     }
