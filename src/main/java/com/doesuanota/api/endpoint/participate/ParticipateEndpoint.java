@@ -1,5 +1,7 @@
 package com.doesuanota.api.endpoint.participate;
 
+import com.doesuanota.api.domain.participate.service.ParticipateService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,13 +16,18 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping("/participate")
 public class ParticipateEndpoint {
 
+    private final ParticipateService service;
+
+    @Autowired
+    public ParticipateEndpoint(ParticipateService service){
+        this.service = service;
+    }
+
+
     @RequestMapping(method = POST, produces = {APPLICATION_JSON_VALUE})
     @ResponseBody
     public ResponseEntity create(@RequestBody ParticipateResource resource) {
-
-
-
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity(HttpStatus.NOT_IMPLEMENTED);
     }
 
 

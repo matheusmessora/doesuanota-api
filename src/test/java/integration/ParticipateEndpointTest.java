@@ -49,6 +49,6 @@ public class ParticipateEndpointTest {
         mockMvc.perform(post("/participate")
                 .content(request)
                 .contentType(contentType))
-                .andExpect(status().isCreated());
+                .andExpect(status().isNotImplemented());
     }
 }
