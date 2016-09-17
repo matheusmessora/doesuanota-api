@@ -2,3 +2,9 @@ language: java
 
 jdk:
   - oraclejdk8
+
+services: mongodb
+
+
+script:
+  - mvn test -B -Dspring.data.mongodb.host=localhost
