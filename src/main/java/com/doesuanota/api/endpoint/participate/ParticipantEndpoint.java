@@ -32,8 +32,6 @@ public class ParticipantEndpoint {
     public ResponseEntity<ParticipantResource> create(@RequestBody ParticipantResource resource) {
 
         final Participant createdParticipant = service.register(factory.convert(resource));
-
-
         return new ResponseEntity<>(new ParticipantResource(createdParticipant), HttpStatus.CREATED);
     }
 }

@@ -32,4 +32,37 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
         logger.debug(response);
 
     }
+
+
+    @Test
+    public void should_return_badrequest_when_empty_email() throws Exception {
+        final URL file = Resources.getResource("requests/participate/empty_email.json");
+        String request = Resources.toString(file, Charsets.UTF_8);
+
+        final String response = mockMvc.perform(post("/participant")
+                .content(request)
+                .contentType(contentType))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Invalid e-mail"))
+                .andReturn().getResponse().getContentAsString();
+
+        logger.debug(response);
+
+    }
+
+    @Test
+    public void should_return_badrequest_when_invalid_email() throws Exception {
+        final URL file = Resources.getResource("requests/participate/invalid_email.json");
+        String request = Resources.toString(file, Charsets.UTF_8);
+
+        final String response = mockMvc.perform(post("/participant")
+                .content(request)
+                .contentType(contentType))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Invalid e-mail"))
+                .andReturn().getResponse().getContentAsString();
+
+        logger.debug(response);
+
+    }
 }
