@@ -6,6 +6,8 @@
     <groupId>com.doesuanota</groupId>
     <artifactId>api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <!-- Easier deployable to AWS Elasticbeanstalk-->
     <packaging>jar</packaging>
 
     <name>doesuanota-api</name>
