@@ -11,7 +11,7 @@ script:
 
 before_deploy:
   - mkdir dist
-  - mv target/api-*.war dist
+  - mv target/api-*.jar dist
 
 
 deploy:
