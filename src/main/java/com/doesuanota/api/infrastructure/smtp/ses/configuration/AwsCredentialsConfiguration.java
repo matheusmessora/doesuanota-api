@@ -1,0 +1,17 @@
+package com.doesuanota.api.infrastructure.smtp.ses.configuration;
+
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+@Configuration
+@Profile("!local")
+public class AwsCredentialsConfiguration {
+
+    @Bean
+    public AWSCredentials getAWSCredentials() {
+        return new EnvironmentVariableCredentialsProvider().getCredentials();
+    }
+}

@@ -25,12 +25,11 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
                 .content(request)
                 .contentType(contentType))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.email").value("matheus@example.com"))
+                .andExpect(jsonPath("$.email").value("success@simulator.amazonses.com"))
                 .andExpect(jsonPath("$.id").exists())
                 .andReturn().getResponse().getContentAsString();
 
         logger.debug(response);
-
     }
 
 
