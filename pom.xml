@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <!-- Easier deployable to AWS Elasticbeanstalk-->
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>doesuanota-api</name>
     <description>REST API for doesuanota.com.br</description>
