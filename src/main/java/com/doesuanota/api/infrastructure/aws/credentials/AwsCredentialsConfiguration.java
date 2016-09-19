@@ -1,4 +1,4 @@
-package com.doesuanota.api.infrastructure.smtp.ses.configuration;
+package com.doesuanota.api.infrastructure.aws.credentials;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
