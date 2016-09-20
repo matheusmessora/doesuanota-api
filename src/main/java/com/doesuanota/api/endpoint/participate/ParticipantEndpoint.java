@@ -18,8 +18,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping("participant")
 public class ParticipantEndpoint {
 
-    private final ParticipantService service;
-    private final ParticipantFactory factory;
+    @Autowired
+    private ParticipantService service;
+
+    @Autowired
+    private ParticipantFactory factory;
 
     @Autowired
     public ParticipantEndpoint(ParticipantService service, final ParticipantFactory factory){
