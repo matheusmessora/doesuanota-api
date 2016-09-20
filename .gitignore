@@ -12,6 +12,8 @@
 hs_err_pid*
 
 dist/
+dist.zip
+stage/
 *.idea
 *.iml
 target/
