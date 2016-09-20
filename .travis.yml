@@ -10,12 +10,8 @@ script:
   - mvn test -B -Dspring.data.mongodb.host=localhost
 
 before_deploy:
-  - mkdir stage
   - mkdir dist
-  - cp target/api-*.jar stage
-  - cp -Rv .ebextensions stage
-  - zip -r dist.zip stage
-  - cp dist.zip dist
+  - cp target/api-*.jar dist
 
 
 deploy:
