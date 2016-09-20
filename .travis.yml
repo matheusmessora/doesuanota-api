@@ -11,7 +11,6 @@ script:
 
 before_deploy:
   - mkdir dist
-  - cp -Rv .ebextensions dist
   - mv target/api-*.jar dist
 
 
