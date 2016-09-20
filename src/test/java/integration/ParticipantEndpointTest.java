@@ -26,6 +26,7 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
                 .contentType(contentType))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.email").value("success@simulator.amazonses.com"))
+                .andExpect(jsonPath("$.questionToken").exists())
                 .andExpect(jsonPath("$.id").exists())
                 .andReturn().getResponse().getContentAsString();
 

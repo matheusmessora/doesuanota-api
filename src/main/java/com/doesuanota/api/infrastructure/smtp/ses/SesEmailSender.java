@@ -12,13 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class SesEmailSender implements EmailSender {
 
-    private final AmazonSimpleEmailServiceClient client;
-
     @Autowired
-    public SesEmailSender(final AmazonSimpleEmailServiceClient client) {
-        this.client = client;
-    }
-
+    private AmazonSimpleEmailServiceClient client;
 
     /**
      * Based on

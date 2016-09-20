@@ -1,8 +1,8 @@
 package com.doesuanota.api.endpoint.participate;
 
-import com.doesuanota.api.domain.participate.ParticipantFactory;
-import com.doesuanota.api.domain.participate.service.ParticipantService;
-import com.doesuanota.api.infrastructure.repository.participant.Participant;
+import com.doesuanota.api.domain.participant.ParticipantFactory;
+import com.doesuanota.api.domain.participant.service.ParticipantService;
+import com.doesuanota.api.domain.participant.Participant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

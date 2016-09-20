@@ -1,0 +1,7 @@
+Obrigado por participar do <strong>Doe sua nota</strong>. <br /><br />
+
+
+Agora você ficará por dentro das novidades e será um dos primeiros a receber o link de download para o aplicativo <br />
+Caso queira nos dar um feed-back, clique no link abaixo: <br />http://doesuanota.com.br/feedback?id={{token}}
+
+<br /><br />Atenciosamente,<br />MM

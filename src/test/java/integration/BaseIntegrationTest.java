@@ -2,7 +2,7 @@ package integration;
 
 
 import com.doesuanota.api.Application;
-import com.doesuanota.api.infrastructure.repository.participant.Participant;
+import com.doesuanota.api.domain.participant.Participant;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;

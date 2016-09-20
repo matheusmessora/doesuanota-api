@@ -1,7 +1,6 @@
-package com.doesuanota.api.domain.participate;
+package com.doesuanota.api.domain.participant;
 
 import com.doesuanota.api.endpoint.participate.ParticipantResource;
-import com.doesuanota.api.infrastructure.repository.participant.Participant;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
