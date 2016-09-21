@@ -4,6 +4,8 @@ import com.doesuanota.api.domain.email.Email;
 import com.doesuanota.api.domain.participant.Participant;
 import com.doesuanota.api.domain.participant.exception.ParticipantAlreadyRegistered;
 import com.doesuanota.api.infrastructure.repository.participant.ParticipantRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.Optional;
 @Service
 public class ParticipantServiceImpl implements ParticipantService {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private ParticipantRepository repository;
 
@@ -19,6 +23,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     private WelcomeEmailService welcomeEmailService;
 
     public Participant register(final Participant participant) {
+        logger.info("Registering email=" + participant.email());
         checkIfExists(participant.email());
 
         participant.generateSurvey();
@@ -26,6 +31,8 @@ public class ParticipantServiceImpl implements ParticipantService {
         final Participant savedParticipant = repository.save(participant);
 
         sendWelcomeEmail(savedParticipant);
+
+        logger.info("Registered email=" + participant.email());
 
         return savedParticipant;
     }
