@@ -2,6 +2,7 @@ package com.doesuanota.api.domain.participant.service;
 
 import com.doesuanota.api.domain.email.Email;
 import com.doesuanota.api.domain.participant.Participant;
+import com.doesuanota.api.domain.participant.exception.ParticipantAlreadyRegistered;
 import com.doesuanota.api.infrastructure.repository.participant.ParticipantRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,4 +53,12 @@ public class ParticipantServiceImplTest {
         verify(repository, times(1)).save(any(Participant.class));
     }
 
+    @Test(expected = ParticipantAlreadyRegistered.class)
+    public void should_throw_error_if_participant_already_exists(){
+        final Email email = Email.valueOf("a@a.com");
+        final Participant mockParticipant = new Participant(email);
+        when(repository.findByEmail(anyString())).thenReturn(mockParticipant);
+
+        service.register(mockParticipant);
+    }
 }
