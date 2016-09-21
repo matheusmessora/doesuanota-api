@@ -13,8 +13,6 @@ before_deploy:
   - mkdir dist
   - cp target/api-*.jar dist
 
-after_success:
-  - coveralls
 
 deploy:
   provider: s3
