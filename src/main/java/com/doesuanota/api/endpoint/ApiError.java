@@ -1,6 +1,8 @@
 package com.doesuanota.api.endpoint;
 
 
+import com.doesuanota.api.infrastructure.json.BadRequestException;
+
 public class ApiError {
 
     private String error;
@@ -9,14 +11,11 @@ public class ApiError {
         this.error = error;
     }
 
-    public ApiError() {
+    public ApiError(final BadRequestException exc) {
+        this.error = exc.getError();
     }
 
     public String getError() {
         return error;
-    }
-
-    public void setError(final String error) {
-        this.error = error;
     }
 }

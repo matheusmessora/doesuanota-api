@@ -25,7 +25,7 @@ public class WelcomeEmailServiceImpl implements WelcomeEmailService {
             final URL file = Resources.getResource("welcome-email.txt");
             String body = Resources.toString(file, Charsets.UTF_8);
 
-            return body.replace("{{token}}", participant.questionToken());
+            return body.replace("{{token}}", participant.surveyToken());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

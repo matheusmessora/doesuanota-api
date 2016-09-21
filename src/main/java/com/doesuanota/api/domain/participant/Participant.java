@@ -1,6 +1,7 @@
 package com.doesuanota.api.domain.participant;
 
 import com.doesuanota.api.domain.email.Email;
+import com.doesuanota.api.domain.survey.Survey;
 import com.doesuanota.api.infrastructure.repository.participant.TokenAlreadyGenerated;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -17,8 +18,13 @@ public class Participant {
     @Indexed
     private String email;
 
-    @Indexed
-    private String questionToken;
+    private Survey survey;
+
+    /**
+     * for spring-data only
+     */
+    public Participant() {
+    }
 
     public Participant(final Email email) {
         this.email = email.toString();
@@ -32,16 +38,23 @@ public class Participant {
         return id;
     }
 
-    public void generateQuestionToken() {
-        if (questionToken != null) {
+    public void generateSurvey() {
+        if (survey != null && survey.getToken() != null) {
             throw new TokenAlreadyGenerated();
         }
 
-        this.questionToken = UUID.randomUUID().toString();
+        final String token = UUID.randomUUID().toString();
+        this.survey = new Survey(token);
     }
 
+    public Survey survey() {
+        return survey;
+    }
 
-    public String questionToken() {
-        return questionToken;
+    public String surveyToken() {
+        if (survey() == null) {
+            return null;
+        }
+        return survey().getToken();
     }
 }

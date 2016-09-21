@@ -1,8 +1,8 @@
-package com.doesuanota.api.endpoint.participate;
+package com.doesuanota.api.endpoint.participant;
 
+import com.doesuanota.api.domain.participant.Participant;
 import com.doesuanota.api.domain.participant.ParticipantFactory;
 import com.doesuanota.api.domain.participant.service.ParticipantService;
-import com.doesuanota.api.domain.participant.Participant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-@RequestMapping("participant")
+@RequestMapping("participants")
 public class ParticipantEndpoint {
 
     @Autowired
@@ -23,12 +23,6 @@ public class ParticipantEndpoint {
 
     @Autowired
     private ParticipantFactory factory;
-
-    @Autowired
-    public ParticipantEndpoint(ParticipantService service, final ParticipantFactory factory){
-        this.service = service;
-        this.factory = factory;
-    }
 
     @RequestMapping(method = POST, produces = {APPLICATION_JSON_VALUE})
     @ResponseBody

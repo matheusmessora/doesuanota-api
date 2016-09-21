@@ -5,6 +5,7 @@ import com.google.common.io.Resources;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import java.net.URL;
 
@@ -21,16 +22,14 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
         final URL file = Resources.getResource("requests/participate/success_create.json");
         String request = Resources.toString(file, Charsets.UTF_8);
 
-        final String response = mockMvc.perform(post("/participant")
+        mockMvc.perform(post("/participants")
                 .content(request)
                 .contentType(contentType))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.email").value("success@simulator.amazonses.com"))
-                .andExpect(jsonPath("$.questionToken").exists())
+                .andExpect(jsonPath("$.surveyToken").exists())
                 .andExpect(jsonPath("$.id").exists())
-                .andReturn().getResponse().getContentAsString();
-
-        logger.debug(response);
+                .andDo(MockMvcResultHandlers.print());
     }
 
 
@@ -39,14 +38,12 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
         final URL file = Resources.getResource("requests/participate/empty_email.json");
         String request = Resources.toString(file, Charsets.UTF_8);
 
-        final String response = mockMvc.perform(post("/participant")
+        mockMvc.perform(post("/participants")
                 .content(request)
                 .contentType(contentType))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error").value("Invalid e-mail"))
-                .andReturn().getResponse().getContentAsString();
-
-        logger.debug(response);
+                .andDo(MockMvcResultHandlers.print());
 
     }
 
@@ -55,14 +52,12 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
         final URL file = Resources.getResource("requests/participate/invalid_email.json");
         String request = Resources.toString(file, Charsets.UTF_8);
 
-        final String response = mockMvc.perform(post("/participant")
+        mockMvc.perform(post("/participants")
                 .content(request)
                 .contentType(contentType))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error").value("Invalid e-mail"))
-                .andReturn().getResponse().getContentAsString();
-
-        logger.debug(response);
+                .andDo(MockMvcResultHandlers.print());
 
     }
 }

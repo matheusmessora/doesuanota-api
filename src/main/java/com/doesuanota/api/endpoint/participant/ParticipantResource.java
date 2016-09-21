@@ -1,10 +1,10 @@
-package com.doesuanota.api.endpoint.participate;
+package com.doesuanota.api.endpoint.participant;
 
 import com.doesuanota.api.domain.participant.Participant;
 
 public class ParticipantResource {
 
-    private String questionToken;
+    private String surveyToken;
     private String id;
     private String email;
 
@@ -13,7 +13,7 @@ public class ParticipantResource {
     ParticipantResource(final Participant createdParticipant) {
         this.id = createdParticipant.id();
         this.email = createdParticipant.email().toString();
-        this.questionToken = createdParticipant.questionToken();
+        this.surveyToken = createdParticipant.surveyToken();
     }
 
     public String getEmail() {
@@ -28,12 +28,12 @@ public class ParticipantResource {
         this.id = id;
     }
 
-    public String getQuestionToken() {
-        return questionToken;
+    public String getSurveyToken() {
+        return surveyToken;
     }
 
-    public void setQuestionToken(final String questionToken) {
-        this.questionToken = questionToken;
+    public void setSurveyToken(final String surveyToken) {
+        this.surveyToken = surveyToken;
     }
 
     public void setEmail(final String email) {

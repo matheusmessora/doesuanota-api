@@ -1,6 +1,6 @@
 package com.doesuanota.api.domain.participant;
 
-import com.doesuanota.api.endpoint.participate.ParticipantResource;
+import com.doesuanota.api.endpoint.participant.ParticipantResource;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

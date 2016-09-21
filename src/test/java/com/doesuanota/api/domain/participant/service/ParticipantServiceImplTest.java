@@ -40,7 +40,16 @@ public class ParticipantServiceImplTest {
         verify(emailService, times(1)).sendWelcomeEmail(any(Participant.class));
 
         final Participant value = participantArgument.getValue();
-        Assert.notNull(value.questionToken());
+        Assert.notNull(value.surveyToken());
+    }
+
+    @Test
+    public void should_persist_participant(){
+        final Email email = Email.valueOf("a@a.com");
+        final Participant mockParticipant = new Participant(email);
+
+        service.persist(mockParticipant);
+        verify(repository, times(1)).save(any(Participant.class));
     }
 
 }

@@ -5,6 +5,8 @@ import com.doesuanota.api.infrastructure.repository.participant.ParticipantRepos
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ParticipantServiceImpl implements ParticipantService {
 
@@ -15,13 +17,21 @@ public class ParticipantServiceImpl implements ParticipantService {
     private WelcomeEmailService welcomeEmailService;
 
     public Participant register(final Participant participant) {
-        participant.generateQuestionToken();
+        participant.generateSurvey();
 
         final Participant savedParticipant = repository.save(participant);
 
         sendWelcomeEmail(savedParticipant);
 
         return savedParticipant;
+    }
+
+    public Optional<Participant> findBySurveyToken(final String surveyToken) {
+        return Optional.ofNullable(repository.findBySurveyToken(surveyToken));
+    }
+
+    public Participant persist(final Participant participant) {
+        return repository.save(participant);
     }
 
     private void sendWelcomeEmail(final Participant savedParticipant) {

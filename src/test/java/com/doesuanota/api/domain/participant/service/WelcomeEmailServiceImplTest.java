@@ -32,9 +32,9 @@ public class WelcomeEmailServiceImplTest {
     @Test
     public void sendWelcomeEmail() throws Exception {
         Participant participant = new Participant(Email.valueOf("a@a.com"));
-        participant.generateQuestionToken();
+        participant.generateSurvey();
 
-        final String token = participant.questionToken();
+        final String token = participant.surveyToken();
         String expectedBody = getExpectedBody(token);
 
         service.sendWelcomeEmail(participant);
