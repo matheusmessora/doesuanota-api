@@ -1,5 +1,7 @@
 package com.doesuanota.api.domain.survey;
 
+import org.springframework.util.StringUtils;
+
 public class Question {
 
     private String question;
@@ -19,5 +21,9 @@ public class Question {
 
     public String getQuestion() {
         return question;
+    }
+
+    public boolean isAnswered() {
+        return !StringUtils.isEmpty(answer);
     }
 }

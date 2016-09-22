@@ -53,7 +53,8 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].email").value("su*****@simulator.amazonses.com"))
                 .andExpect(jsonPath("$[0].survey.questions[0].question").value("O que achou de nosso site?"))
-                .andExpect(jsonPath("$[0].survey.questions[0].answer").value("O site está muito bom!"));
+                .andExpect(jsonPath("$[0].survey.questions[0].answer").value("O site está muito bom!"))
+                .andExpect(jsonPath("$[0].survey.answered").value(true));
 
     }
 

@@ -56,7 +56,12 @@ public class Survey {
     }
 
     public boolean isAnswered() {
-        return questionList.size() == answeredQuestions;
+        for (Question question : questionList) {
+            if(!question.isAnswered()){
+                return false;
+            }
+        }
+        return true;
     }
 
     public String getToken() {
