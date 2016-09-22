@@ -4,10 +4,7 @@
 
 REST API for www.doesuanota.com.br
 
-
 # API
-## Participants
-Represents everyone that wants to paticipate
 
 | URL | Method | Action |
 | --- | --- | --- |
