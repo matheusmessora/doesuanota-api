@@ -48,6 +48,13 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
+    @Test
+    public void should_return_no_content_when_no_participants_found() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/participants"))
+                .andExpect(status().isNoContent())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
 
     @Test
     public void should_return_badrequest_when_empty_email() throws Exception {

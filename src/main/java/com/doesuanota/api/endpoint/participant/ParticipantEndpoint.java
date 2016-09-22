@@ -41,6 +41,9 @@ public class ParticipantEndpoint {
     public ResponseEntity<List<ParticipantResource>> getAll() {
 
         final List<Participant> participants = service.findAll();
+        if(participants.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
 
         final List<ParticipantResource> resources = participants.stream().map(ParticipantResource::new).collect(Collectors.toList());
         resources.forEach(ParticipantResource::maskEmail);
