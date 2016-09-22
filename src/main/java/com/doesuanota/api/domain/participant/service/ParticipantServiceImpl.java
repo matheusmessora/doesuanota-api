@@ -40,6 +40,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     private void checkIfExists(final Email email) {
         final Participant participant = repository.findByEmail(email.toString());
         if(participant != null){
+            logger.info("Already registered email=" + participant.email());
             throw new ParticipantAlreadyRegistered(email);
         }
     }
