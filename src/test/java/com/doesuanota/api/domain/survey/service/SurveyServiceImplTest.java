@@ -4,7 +4,7 @@ import com.doesuanota.api.domain.email.Email;
 import com.doesuanota.api.domain.participant.Participant;
 import com.doesuanota.api.domain.participant.service.ParticipantService;
 import com.doesuanota.api.domain.survey.Survey;
-import com.doesuanota.api.domain.survey.exception.SurveyNotFound;
+import com.doesuanota.api.domain.survey.exception.InvalidToken;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -40,7 +40,7 @@ public class SurveyServiceImplTest {
 
     }
 
-    @Test(expected = SurveyNotFound.class)
+    @Test(expected = InvalidToken.class)
     public void should_throw_error_when_participant_not_found_by_token(){
         when(participantService.findBySurveyToken(anyString()))
                 .thenReturn(Optional.empty());

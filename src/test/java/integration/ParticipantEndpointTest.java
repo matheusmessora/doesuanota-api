@@ -78,6 +78,7 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
                 .contentType(contentType))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error").value("Invalid e-mail"))
+                .andExpect(jsonPath("$.code").value("invalid-email"))
                 .andDo(MockMvcResultHandlers.print());
 
     }

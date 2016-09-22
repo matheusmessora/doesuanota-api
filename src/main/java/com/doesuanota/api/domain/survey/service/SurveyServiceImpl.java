@@ -4,7 +4,7 @@ import com.doesuanota.api.domain.participant.Participant;
 import com.doesuanota.api.domain.participant.service.ParticipantService;
 import com.doesuanota.api.domain.survey.Answer;
 import com.doesuanota.api.domain.survey.Survey;
-import com.doesuanota.api.domain.survey.exception.SurveyNotFound;
+import com.doesuanota.api.domain.survey.exception.InvalidToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +35,6 @@ public class SurveyServiceImpl implements SurveyService {
 
     private Participant getParticipant(final String token) {
         final Optional<Participant> participantOptional = participantService.findBySurveyToken(token);
-        return participantOptional.orElseThrow(SurveyNotFound::new);
+        return participantOptional.orElseThrow(InvalidToken::new);
     }
 }

@@ -64,6 +64,7 @@ public class SurveyEndpointTest extends BaseIntegrationTest {
         mockMvc.perform(get("/surveys/" + surveyId))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error").value("Invalid token"))
+                .andExpect(jsonPath("$.code").value("invalid-token"))
                 .andDo(MockMvcResultHandlers.print());
     }
 
@@ -80,6 +81,7 @@ public class SurveyEndpointTest extends BaseIntegrationTest {
                 .contentType(contentType))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error").value("Survey was answered incompletely"))
+                .andExpect(jsonPath("$.code").value("survey-answered-incompletely"))
                 .andDo(MockMvcResultHandlers.print());
     }
 
