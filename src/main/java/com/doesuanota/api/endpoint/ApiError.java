@@ -11,7 +11,7 @@ public class ApiError {
 
     public ApiError(final BadRequestException exc) {
         this.error = exc.getError();
-        this.code = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_HYPHEN, exc.getClass().getSimpleName());;
+        this.code = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_HYPHEN, exc.getClass().getSimpleName());
     }
 
     public String getError() {
