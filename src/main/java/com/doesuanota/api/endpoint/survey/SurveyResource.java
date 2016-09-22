@@ -16,7 +16,10 @@ public class SurveyResource {
         this.token = survey.getToken();
         this.answered = survey.isAnswered();
         this.questions = new ArrayList<>();
-        questions.addAll(survey.questions().stream().map(question -> new QuestionResource(question.getQuestion())).collect(Collectors.toList()));
+        questions.addAll(survey.questions().stream().map(QuestionResource::new).collect(Collectors.toList()));
+    }
+
+    public SurveyResource() {
     }
 
     public List<QuestionResource> getQuestions() {

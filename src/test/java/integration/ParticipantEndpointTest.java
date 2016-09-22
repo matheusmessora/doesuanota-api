@@ -1,6 +1,8 @@
 package integration;
 
+import com.doesuanota.api.endpoint.participant.ParticipantResource;
 import com.doesuanota.api.helper.ParticipantHelper;
+import com.doesuanota.api.helper.SurveyHelper;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import org.junit.Test;
@@ -23,6 +25,9 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
     @Autowired
     private ParticipantHelper helper;
 
+    @Autowired
+    private SurveyHelper surveyHelper;
+
     @Test
     public void success_create() throws Exception {
         final URL file = Resources.getResource("requests/participate/success_create.json");
@@ -40,12 +45,16 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
 
     @Test
     public void should_return_registered_participants() throws Exception {
-        helper.createParticipant(mockMvc);
+        final ParticipantResource participantResource = helper.createParticipant(mockMvc);
+        surveyHelper.answerSurvey(participantResource, mockMvc);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/participants"))
+                .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].email").value("su*****@simulator.amazonses.com"))
-                .andDo(MockMvcResultHandlers.print());
+                .andExpect(jsonPath("$[0].survey.questions[0].question").value("O que achou de nosso site?"))
+                .andExpect(jsonPath("$[0].survey.questions[0].answer").value("O site está muito bom!"));
+
     }
 
     @Test

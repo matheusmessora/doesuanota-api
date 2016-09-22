@@ -13,6 +13,10 @@ public class Question {
         this.answer = answer.value();
     }
 
+    public String getAnswer() {
+        return answer;
+    }
+
     public String getQuestion() {
         return question;
     }
