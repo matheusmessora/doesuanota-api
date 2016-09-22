@@ -37,7 +37,13 @@ public class ParticipantResource {
     }
 
     public void setEmail(final String email) {
-
         this.email = email;
+    }
+
+    /**
+     * Based on http://stackoverflow.com/questions/33100298/masking-of-email-address-in-java
+     */
+    void maskEmail(){
+        email = email.replaceAll("(^[^@]{2}|(?!^)\\G)[^@]", "$1*");
     }
 }

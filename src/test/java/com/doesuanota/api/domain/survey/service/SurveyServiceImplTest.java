@@ -40,6 +40,19 @@ public class SurveyServiceImplTest {
 
     }
 
+    @Test
+    public void should_return_all_surveys_with_masked_email(){
+        final Participant participant = new Participant(Email.valueOf("a@a.com"));
+        participant.generateSurvey();
+        when(participantService.findBySurveyToken(anyString()))
+                .thenReturn(Optional.of(participant));
+
+
+        Survey survey = service.findByToken("fake-token");
+        Assert.notNull(survey);
+
+    }
+
     @Test(expected = InvalidToken.class)
     public void should_throw_error_when_participant_not_found_by_token(){
         when(participantService.findBySurveyToken(anyString()))

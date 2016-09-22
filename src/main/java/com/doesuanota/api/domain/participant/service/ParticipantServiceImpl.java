@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -51,6 +52,10 @@ public class ParticipantServiceImpl implements ParticipantService {
 
     public Participant persist(final Participant participant) {
         return repository.save(participant);
+    }
+
+    public List<Participant> findAll() {
+        return repository.findAll();
     }
 
     private void sendWelcomeEmail(final Participant savedParticipant) {

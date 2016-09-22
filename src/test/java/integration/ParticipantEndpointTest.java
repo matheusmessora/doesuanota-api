@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import java.net.URL;
@@ -34,6 +35,16 @@ public class ParticipantEndpointTest extends BaseIntegrationTest {
                 .andExpect(jsonPath("$.email").value("success@simulator.amazonses.com"))
                 .andExpect(jsonPath("$.surveyToken").exists())
                 .andExpect(jsonPath("$.id").exists())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void should_return_registered_participants() throws Exception {
+        helper.createParticipant(mockMvc);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/participants"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].email").value("su*****@simulator.amazonses.com"))
                 .andDo(MockMvcResultHandlers.print());
     }
 
