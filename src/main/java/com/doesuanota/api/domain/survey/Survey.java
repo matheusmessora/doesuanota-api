@@ -3,6 +3,7 @@ package com.doesuanota.api.domain.survey;
 import com.doesuanota.api.domain.survey.exception.SurveyAlreadyAnswered;
 import com.doesuanota.api.domain.survey.exception.SurveyAnsweredIncompletely;
 import com.google.common.collect.Lists;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class Survey {
     private String token;
 
     private List<Question> questionList;
+
+    @Transient
     private int answeredQuestions;
 
     public Survey() {
